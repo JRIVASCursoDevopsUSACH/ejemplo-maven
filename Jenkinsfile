@@ -12,9 +12,7 @@ bat "./mvnw.cmd clean compile -e"
 stage('Test') {
 steps {
 script {
-dir ("D:\\Maven\\p3") {
 bat "./mvnw.cmd clean test -e"
-}
 }
 }
 }
