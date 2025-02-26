@@ -19,7 +19,7 @@ bat "./mvnw.cmd clean test -e"
 stage('Jar') {
 steps {
 script {
-sh "./mvnw clean package -e"
+bat "./mvnw clean package -e"
 }
 }
 }
