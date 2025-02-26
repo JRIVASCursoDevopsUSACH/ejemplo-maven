@@ -5,21 +5,21 @@ stages {
 stage('Compile') {
 steps {
 script {
-bat "./mvnw.cmd clean compile -e"
+sh "./mvnw clean compile -e"
 }
 }
 }
 stage('Test') {
 steps {
 script {
-bat "./mvnw.cmd clean test -e"
+sh "./mvnw clean test -e"
 }
 }
 }
 stage('Jar') {
 steps {
 script {
-bat "./mvnw.cmd clean package -e"
+sh "./mvnw clean package -e"
 }
 }
 }
@@ -27,7 +27,7 @@ bat "./mvnw.cmd clean package -e"
 stage('Run') {
 steps {
 script {
-bat "start /min mvnw.cmd spring-boot:run &&"
+sh "nohup bash mvnw spring-boot:run &"
 sleep 20
 }
 }
