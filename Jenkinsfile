@@ -5,14 +5,14 @@ stages {
 stage('Compile') {
 steps {
 script {
-sh "./mvnw clean compile -e"
+bat "./mvnw.cmd clean compile -e"
 }
 }
 }
 stage('Test') {
 steps {
 script {
-sh "./mvnw clean test -e"
+bat "./mvnw.cmd clean test -e"
 }
 }
 }
@@ -27,7 +27,7 @@ sh "./mvnw clean package -e"
 stage('Run') {
 steps {
 script {
-sh "nohup bash mvnw spring-boot:run &"
+bat "start /min mvnw.cmd spring-boot:run &&"
 sleep 20
 }
 }
@@ -35,7 +35,7 @@ sleep 20
 stage('TestApp') {
 steps {
 script {
-sh "curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
+bat "start chrome http://localhost:8081/rest/mscovid/test?msg=testing"
 }
 }
 }
