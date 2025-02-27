@@ -12,11 +12,13 @@ bat "./mvnw.cmd clean compile -e"
 }
 }
 stage('SonarQube Analysis') {
-            steps {
+            steps { 
+		withSonarQubeEnv('Sonarqube-Server') {
                 script {
                     def scannerHome = tool 'Sonar-scanner'
                     bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ejemplo-maven -Dsonar.java.binaries=build -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=${env.SONAR_TOKEN}"
-                }
+                 }   
+               }
             }
         }  
 stage('Test') {
